@@ -1,0 +1,269 @@
+/* GLOBAL STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app-wrapper {
+  width: 100%;
+  max-width: 430px;
+  aspect-ratio: 9/16;
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* SCALE BAR */
+.scale-bar {
+  width: 100%;
+  position: absolute;
+  top: 40px;
+  padding: 10px 20px;
+  z-index: 10;
+}
+.scale-line {
+  position: relative;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+.scale-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  background-color: #57a8ff;
+  width: 0%;
+  border-radius: 5px;
+  transition: width 0.4s ease;
+}
+.scale-dot {
+  position: absolute;
+  top: -4px;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+.scale-labels {
+  position: relative;
+  margin-top: 4px;
+  font-size: 12px;
+  color: white;
+  font-family: sans-serif;
+}
+.scale-labels span {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+/* GAME AREA */
+.game-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.goalkeeper {
+  position: absolute;
+  bottom: 40%;
+  left: 51%;
+  transform: translateX(-50%);
+  width: 110%;
+  z-index: 2;
+}
+
+/* CIRCLES */
+.circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  z-index: 3;
+}
+.circle img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.circle .ball {
+  top: 8px;
+  left: 8px;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+}
+.circle.pulse,
+.circle .ball.pulse {
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* CIRCLE POSITIONS */
+.circle-tl {
+  top: 36%;
+  left: 7%;
+}
+.circle-tr {
+  top: 36%;
+  right: 8%;
+}
+.circle-top {
+  top: 36%;
+  left: 43%;
+}
+.circle-bl {
+  bottom: 42%;
+  left: 7%;
+}
+.circle-br {
+  bottom: 42%;
+  right: 8%;
+}
+
+/* PLAY BUTTON */
+.play-button {
+  position: absolute;
+  bottom: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  z-index: 5;
+  cursor: pointer;
+}
+.play-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  z-index: 1;
+  transition: transform 0.3s;
+}
+.play-button:active img {
+  transform: scale(0.9);
+}
+.play-text {
+  position: absolute;
+  bottom: 19px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+  z-index: 2;
+}
+
+/* ARROWS */
+.arrows {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  pointer-events: none;
+  display: none;
+  z-index: 4;
+}
+.arrow {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+}
+.arrow-top {
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+}
+.arrow-bottom {
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+}
+.arrow-left {
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+.arrow-right {
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* === ПУЛЬСАЦИЯ СТРЕЛОК С СОХРАНЕНИЕМ ROTATE === */
+
+.arrow.pulse-top {
+  animation: pulseMoveTop 1.2s infinite ease-in-out;
+}
+.arrow.pulse-bottom {
+  animation: pulseMoveBottom 1.2s infinite ease-in-out;
+}
+.arrow.pulse-left {
+  animation: pulseMoveLeft 1.2s infinite ease-in-out;
+}
+.arrow.pulse-right {
+  animation: pulseMoveRight 1.2s infinite ease-in-out;
+}
+
+@keyframes pulseMoveTop {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px) rotate(0deg);
+  }
+}
+@keyframes pulseMoveBottom {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0px) rotate(180deg);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px) rotate(180deg);
+  }
+}
+@keyframes pulseMoveLeft {
+  0%,
+  100% {
+    transform: translateY(-50%) translateX(0px) rotate(-90deg);
+  }
+  50% {
+    transform: translateY(-50%) translateX(-10px) rotate(-90deg);
+  }
+}
+@keyframes pulseMoveRight {
+  0%,
+  100% {
+    transform: translateY(-50%) translateX(0px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-50%) translateX(10px) rotate(90deg);
+  }
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penalty Shootout</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <!-- Шкала коэффициентов -->
+      <div class="scale-bar">
+        <div class="scale-line">
+          <div class="scale-fill" id="scaleFill"></div>
+          <div class="scale-dot" style="left: 5%"></div>
+          <div class="scale-dot" style="left: 25%"></div>
+          <div class="scale-dot" style="left: 50%"></div>
+          <div class="scale-dot" style="left: 75%"></div>
+          <div class="scale-dot" style="left: 95%"></div>
+        </div>
+        <div class="scale-labels">
+          <span style="left: 5%">x1.92</span>
+          <span style="left: 25%">x3.84</span>
+          <span style="left: 50%">x7.68</span>
+          <span style="left: 75%">x15.36</span>
+          <span style="left: 95%">x30.72</span>
+        </div>
+      </div>
+
+      <div class="game-container">
+        <img src="bg_jpg-1.png" alt="Background" class="background" />
+
+        <!-- Цели -->
+        <div class="circle circle-tl">
+          <img src="circle_ball.png" alt="circle" /><img
+            class="ball"
+            src="target_ball.png"
+            alt="ball"
+          />
+        </div>
+        <div class="circle circle-top">
+          <img src="circle_ball.png" alt="circle" /><img
+            class="ball"
+            src="target_ball.png"
+            alt="ball"
+          />
+        </div>
+        <div class="circle circle-tr">
+          <img src="circle_ball.png" alt="circle" /><img
+            class="ball"
+            src="target_ball.png"
+            alt="ball"
+          />
+        </div>
+        <div class="circle circle-bl">
+          <img src="circle_ball.png" alt="circle" /><img
+            class="ball"
+            src="target_ball.png"
+            alt="ball"
+          />
+        </div>
+        <div class="circle circle-br">
+          <img src="circle_ball.png" alt="circle" /><img
+            class="ball"
+            src="target_ball.png"
+            alt="ball"
+          />
+        </div>
+
+        <!-- Стрелки вокруг круга -->
+        <div class="arrows" id="arrows">
+          <img class="arrow arrow-top" src="triangle.png" />
+          <img class="arrow arrow-bottom" src="triangle.png" />
+          <img class="arrow arrow-left" src="triangle.png" />
+          <img class="arrow arrow-right" src="triangle.png" />
+        </div>
+
+        <!-- Вратарь -->
+        <img src="goalkeeper_1.png" alt="Goalkeeper" class="goalkeeper" />
+
+        <!-- Кнопка Прогноз -->
+        <div class="play-button" onclick="startPrediction()">
+          <img src="play.png" alt="Play Button" />
+          <span class="play-text">Прогноз</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
